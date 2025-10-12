@@ -17,7 +17,7 @@ export const Clock = () => {
       setDate(getLocalTime());
     }, 1000);
     return () => clearInterval(interval);
-  }, [date]);
+  }, []);
 
   const dateIso = date.toISOString();
 

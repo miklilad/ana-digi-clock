@@ -1,4 +1,4 @@
-export type ClockHandDirection = "up" | "down" | "left" | "right" | number;
+export type ClockHandDirection = "up" | "down" | "left" | "right";
 
 type ClockHandProps = {
   direction: ClockHandDirection;
@@ -6,9 +6,6 @@ type ClockHandProps = {
 };
 
 const getRotation = (direction: ClockHandDirection) => {
-  if (typeof direction === "number") {
-    return `rotate-${direction}`;
-  }
   switch (direction) {
     case "up":
       return "rotate-90";
