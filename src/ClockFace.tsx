@@ -11,7 +11,7 @@ const getClockFaceTime = (
   clockFace: ClockFaceTime
 ): [ClockHandDirection, ClockHandDirection] =>
   match(clockFace)
-    .with(" ", () => ["left", "left"])
+    .with(" ", () => ["up", "up"])
     .with("-", () => ["left", "right"])
     .with("|", () => ["up", "down"])
     .with("┐", () => ["left", "down"])
