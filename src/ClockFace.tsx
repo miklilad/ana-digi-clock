@@ -5,6 +5,7 @@ export type ClockFaceTime = " " | "-" | "|" | "┐" | "┘" | "└" | "┌";
 
 type ClockFaceProps = {
   clockFace: ClockFaceTime;
+  transitionTimeMs?: number;
 };
 
 const getClockFaceTime = (
@@ -20,12 +21,12 @@ const getClockFaceTime = (
     .with("┘", () => ["left", "up"])
     .exhaustive() as [ClockHandDirection, ClockHandDirection];
 
-export const ClockFace = ({ clockFace }: ClockFaceProps) => {
+export const ClockFace = ({ clockFace, transitionTimeMs }: ClockFaceProps) => {
   const [firstHand, secondHand] = getClockFaceTime(clockFace);
   return (
     <div className="min-w-4 md:min-w-6 lg:min-w-10 2xl:min-w-14 aspect-square rounded-full border-2 border-teal-900 relative">
-      <ClockHand direction={firstHand} />
-      <ClockHand direction={secondHand} />
+      <ClockHand direction={firstHand} transitionTimeMs={transitionTimeMs} />
+      <ClockHand direction={secondHand} transitionTimeMs={transitionTimeMs} />
     </div>
   );
 };

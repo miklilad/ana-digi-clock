@@ -15,7 +15,6 @@ export const Clock = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDate(getLocalTime());
-      console.log(date.toISOString());
     }, 1000);
     return () => clearInterval(interval);
   }, [date]);
@@ -36,8 +35,8 @@ export const Clock = () => {
         <ClockFace clockFace={" "} />
         <ClockFace clockFace={" "} />
       </div>
-      <Digit digit={dateIso[17] as DigitType} />
-      <Digit digit={dateIso[18] as DigitType} />
+      <Digit digit={dateIso[17] as DigitType} transitionTimeMs={2000} />
+      <Digit digit={dateIso[18] as DigitType} transitionTimeMs={900} />
     </div>
   );
 };

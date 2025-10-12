@@ -15,6 +15,7 @@ export type DigitType =
 
 type DigitProps = {
   digit: DigitType;
+  transitionTimeMs?: number;
 };
 
 const getDigitsClockFace = (digit: DigitType) =>
@@ -102,11 +103,15 @@ const getDigitsClockFace = (digit: DigitType) =>
     .exhaustive()
     .flat();
 
-export const Digit = ({ digit }: DigitProps) => {
+export const Digit = ({ digit, transitionTimeMs }: DigitProps) => {
   return (
     <div className="grid grid-cols-4 grid-rows-6 grid-gap-0">
       {getDigitsClockFace(digit).map((row, index) => (
-        <ClockFace clockFace={row} key={index} />
+        <ClockFace
+          clockFace={row}
+          key={index}
+          transitionTimeMs={transitionTimeMs}
+        />
       ))}
     </div>
   );

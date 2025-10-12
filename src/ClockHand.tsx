@@ -2,6 +2,7 @@ export type ClockHandDirection = "up" | "down" | "left" | "right" | number;
 
 type ClockHandProps = {
   direction: ClockHandDirection;
+  transitionTimeMs?: number;
 };
 
 const getRotation = (direction: ClockHandDirection) => {
@@ -20,15 +21,19 @@ const getRotation = (direction: ClockHandDirection) => {
   }
 };
 
-export const ClockHand = ({ direction }: ClockHandProps) => {
+export const ClockHand = ({
+  direction,
+  transitionTimeMs = 5000,
+}: ClockHandProps) => {
   const rotation = getRotation(direction);
   return (
     <div
       className={`bg-yellow-500 h-1/5 w-1/2
          origin-right absolute top-1/2
           -translate-y-1/2 rounded-full ${rotation}
-          transition duration-900 ease-in-out
+          transition ease-in-out
           `}
+      style={{ transitionDuration: `${transitionTimeMs}ms` }}
     ></div>
   );
 };
