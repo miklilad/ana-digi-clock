@@ -1,11 +1,16 @@
 import { match } from "ts-pattern";
-import { ClockHand, type ClockHandDirection } from "./ClockHand";
+import {
+  ClockHand,
+  type AnimationType,
+  type ClockHandDirection,
+} from "./ClockHand";
 
 export type ClockFaceTime = " " | "-" | "|" | "┐" | "┘" | "└" | "┌";
 
 type ClockFaceProps = {
   clockFace: ClockFaceTime;
   transitionTimeMs?: number;
+  animationType?: AnimationType;
 };
 
 const getClockFaceTime = (
@@ -25,12 +30,24 @@ const getClockFaceTime = (
 //   <ClockHand direction={firstHand} transitionTimeMs={transitionTimeMs} />
 //   <ClockHand direction={secondHand} transitionTimeMs={transitionTimeMs} />
 // </div>
-export const ClockFace = ({ clockFace, transitionTimeMs }: ClockFaceProps) => {
+export const ClockFace = ({
+  clockFace,
+  transitionTimeMs,
+  animationType,
+}: ClockFaceProps) => {
   const [firstHand, secondHand] = getClockFaceTime(clockFace);
   return (
     <div className="aspect-square rounded-full border-[1px] border-teal-900 relative">
-      <ClockHand direction={firstHand} transitionTimeMs={transitionTimeMs} />
-      <ClockHand direction={secondHand} transitionTimeMs={transitionTimeMs} />
+      <ClockHand
+        direction={firstHand}
+        transitionTimeMs={transitionTimeMs}
+        animationType={animationType}
+      />
+      <ClockHand
+        direction={secondHand}
+        transitionTimeMs={transitionTimeMs}
+        animationType={animationType}
+      />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { match } from "ts-pattern";
 import { ClockFace, type ClockFaceTime } from "./ClockFace";
 import { memo } from "react";
+import type { AnimationType } from "./ClockHand";
 
 export type DigitType =
   | "0"
@@ -17,6 +18,7 @@ export type DigitType =
 type DigitProps = {
   digit: DigitType;
   transitionTimeMs?: number;
+  animationType?: AnimationType;
 };
 
 const getDigitsClockFace = (digit: DigitType) =>
@@ -104,7 +106,7 @@ const getDigitsClockFace = (digit: DigitType) =>
     .exhaustive()
     .flat();
 
-const DigitBase = ({ digit, transitionTimeMs }: DigitProps) => {
+const DigitBase = ({ digit, transitionTimeMs, animationType }: DigitProps) => {
   return (
     <div className="grid grid-cols-4 grid-rows-6 gap-0 grow">
       {getDigitsClockFace(digit).map((row, index) => (
@@ -112,6 +114,7 @@ const DigitBase = ({ digit, transitionTimeMs }: DigitProps) => {
           clockFace={row}
           key={index}
           transitionTimeMs={transitionTimeMs}
+          animationType={animationType}
         />
       ))}
     </div>
