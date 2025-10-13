@@ -22,21 +22,39 @@ export const Clock = () => {
   const dateIso = date.toISOString();
 
   return (
-    <div className="flex flex-row gap-4 w-full h-screen justify-center items-center max-w-screen max-h-screen">
-      <Digit digit={dateIso[11] as DigitType} />
-      <Digit digit={dateIso[12] as DigitType} />
-      <div className="flex flex-col gap-2">
-        <ClockFace clockFace={" "} />
-        <ClockFace clockFace={" "} />
+    <div className="flex flex-col w-full h-screen justify-center gap-16">
+      <div className="flex flex-row gap-4 w-full justify-center items-end p-6">
+        <Digit digit={dateIso[0] as DigitType} transitionTimeMs={10_000} />
+        <Digit digit={dateIso[1] as DigitType} transitionTimeMs={10_000} />
+        <Digit digit={dateIso[2] as DigitType} transitionTimeMs={10_000} />
+        <Digit digit={dateIso[3] as DigitType} transitionTimeMs={10_000} />
+        <div className="aspect-square w-3 ">
+          <ClockFace clockFace={" "} />
+        </div>
+        <Digit digit={dateIso[5] as DigitType} transitionTimeMs={10_000} />
+        <Digit digit={dateIso[6] as DigitType} transitionTimeMs={10_000} />
+        <div className="aspect-square w-3 ">
+          <ClockFace clockFace={" "} />
+        </div>
+        <Digit digit={dateIso[8] as DigitType} transitionTimeMs={10_000} />
+        <Digit digit={dateIso[9] as DigitType} transitionTimeMs={10_000} />
       </div>
-      <Digit digit={dateIso[14] as DigitType} />
-      <Digit digit={dateIso[15] as DigitType} />
-      <div className="flex flex-col gap-2">
-        <ClockFace clockFace={" "} />
-        <ClockFace clockFace={" "} />
+      <div className="flex flex-row gap-4 w-full justify-center items-center p-6">
+        <Digit digit={dateIso[11] as DigitType} transitionTimeMs={5_000} />
+        <Digit digit={dateIso[12] as DigitType} transitionTimeMs={5_000} />
+        <div className="flex flex-col gap-2 w-3 ">
+          <ClockFace clockFace={" "} />
+          <ClockFace clockFace={" "} />
+        </div>
+        <Digit digit={dateIso[14] as DigitType} transitionTimeMs={5_000} />
+        <Digit digit={dateIso[15] as DigitType} transitionTimeMs={5_000} />
+        <div className="flex flex-col gap-2 w-3 ">
+          <ClockFace clockFace={" "} />
+          <ClockFace clockFace={" "} />
+        </div>
+        <Digit digit={dateIso[17] as DigitType} transitionTimeMs={2000} />
+        <Digit digit={dateIso[18] as DigitType} transitionTimeMs={900} />
       </div>
-      <Digit digit={dateIso[17] as DigitType} transitionTimeMs={2000} />
-      <Digit digit={dateIso[18] as DigitType} transitionTimeMs={900} />
     </div>
   );
 };
