@@ -26,12 +26,12 @@ export const Clock = () => {
       <div className="flex flex-row gap-4 w-full justify-center items-end p-6">
         <Digit digit={dateIso[8] as DigitType} transitionTimeMs={10_000} />
         <Digit digit={dateIso[9] as DigitType} transitionTimeMs={10_000} />
-        <div className="aspect-square w-6 ">
+        <div className="aspect-square w-1/50 ">
           <ClockFace clockFace={" "} />
         </div>
         <Digit digit={dateIso[5] as DigitType} transitionTimeMs={10_000} />
         <Digit digit={dateIso[6] as DigitType} transitionTimeMs={10_000} />
-        <div className="aspect-square w-6 ">
+        <div className="aspect-square w-1/50 ">
           <ClockFace clockFace={" "} />
         </div>
         <Digit digit={dateIso[0] as DigitType} transitionTimeMs={10_000} />
@@ -50,7 +50,7 @@ export const Clock = () => {
           transitionTimeMs={5_000}
           animationType="ease-in-out"
         />
-        <div className="flex flex-col gap-2 w-6 ">
+        <div className="flex flex-col gap-2 w-1/50 ">
           <ClockFace clockFace={" "} />
           <ClockFace clockFace={" "} />
         </div>
@@ -64,7 +64,7 @@ export const Clock = () => {
           transitionTimeMs={5_000}
           animationType="ease-in-out"
         />
-        <div className="flex flex-col gap-2 w-6 ">
+        <div className="flex flex-col gap-2 w-1/50 ">
           <ClockFace clockFace={" "} />
           <ClockFace clockFace={" "} />
         </div>
