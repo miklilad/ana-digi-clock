@@ -1,9 +1,13 @@
 import { Clock } from "./Clock";
+import { Settings, SettingsProvider } from "./settings/Settings";
 
 function App() {
   return (
     <>
-      <Clock />
+      <SettingsProvider>
+        <Clock />
+        <Settings />
+      </SettingsProvider>
     </>
   );
 }

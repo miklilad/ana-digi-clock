@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Digit } from "./Digit";
 import type { DigitType } from "./Digit";
 import { ClockFace } from "./ClockFace";
+import { useSettings } from "./settings/useSettings";
 
 const getLocalTime = () => {
   const date = new Date();
@@ -11,6 +12,8 @@ const getLocalTime = () => {
 
 export const Clock = () => {
   const [date, setDate] = useState<Date>(getLocalTime());
+
+  const { backgroundColor } = useSettings();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,7 +25,12 @@ export const Clock = () => {
   const dateIso = date.toISOString();
 
   return (
-    <div className="flex flex-col w-full h-screen justify-center gap-16">
+    <div
+      className="flex flex-col w-full h-screen justify-center gap-16"
+      style={{
+        backgroundColor: `rgba(${backgroundColor[0]}, ${backgroundColor[1]}, ${backgroundColor[2]}, ${backgroundColor[3]})`,
+      }}
+    >
       <div className="flex flex-row gap-4 w-full justify-center items-end p-6">
         <Digit digit={dateIso[8] as DigitType} transitionTimeMs={10_000} />
         <Digit digit={dateIso[9] as DigitType} transitionTimeMs={10_000} />

@@ -1,3 +1,5 @@
+import { useSettings } from "./settings/useSettings";
+
 export type ClockHandDirection = "up" | "down" | "left" | "right";
 export type AnimationType = "ease-in-out" | "ease-out" | "ease-in" | "linear";
 
@@ -26,16 +28,18 @@ export const ClockHand = ({
   animationType,
 }: ClockHandProps) => {
   const rotation = getRotation(direction);
+  const { handColor } = useSettings();
   return (
     <div
-      className={`bg-yellow-500 h-1/5 w-1/2
+      className={`h-1/5 w-1/2
          origin-right absolute top-1/2
           -translate-y-1/2 rounded-full ${rotation}
-          transition}
+          transition-transform}
           `}
       style={{
         transitionDuration: `${transitionTimeMs}ms`,
         transitionTimingFunction: animationType ?? "linear",
+        backgroundColor: `rgba(${handColor[0]}, ${handColor[1]}, ${handColor[2]}, ${handColor[3]})`,
       }}
     ></div>
   );
