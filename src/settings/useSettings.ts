@@ -5,6 +5,18 @@ interface SettingsContextType {
   setBackgroundColor: (backgroundColor: number[]) => void;
   handColor: number[];
   setHandColor: (handColor: number[]) => void;
+  showYear: boolean;
+  setShowYear: (showYear: boolean) => void;
+  showMonth: boolean;
+  setShowMonth: (showMonth: boolean) => void;
+  showDay: boolean;
+  setShowDay: (showDay: boolean) => void;
+  showHour: boolean;
+  setShowHour: (showHour: boolean) => void;
+  showMinute: boolean;
+  setShowMinute: (showMinute: boolean) => void;
+  showSecond: boolean;
+  setShowSecond: (showSecond: boolean) => void;
 }
 export const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined

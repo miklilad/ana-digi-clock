@@ -33,7 +33,7 @@ export const ClockFace = ({
 }: ClockFaceProps) => {
   const [firstHand, secondHand] = getClockFaceTime(clockFace);
   return (
-    <div className="aspect-square rounded-full border-[1px] border-teal-900 relative">
+    <div className="relative aspect-square max-h-full rounded-full border-[1px] border-teal-900">
       <ClockHand
         direction={firstHand}
         transitionTimeMs={transitionTimeMs}

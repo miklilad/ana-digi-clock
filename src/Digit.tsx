@@ -108,7 +108,7 @@ const getDigitsClockFace = (digit: DigitType) =>
 
 const DigitBase = ({ digit, transitionTimeMs, animationType }: DigitProps) => {
   return (
-    <div className="grid grid-cols-4 grid-rows-6 gap-0 grow">
+    <div className="grid aspect-[4/6] grow grid-cols-4 grid-rows-6 gap-0">
       {getDigitsClockFace(digit).map((row, index) => (
         <ClockFace
           clockFace={row}

@@ -31,10 +31,7 @@ export const ClockHand = ({
   const { handColor } = useSettings();
   return (
     <div
-      className={`h-1/5 w-1/2
-         origin-right absolute top-1/2
-         -translate-y-1/2 rounded-full ${rotation} transition-transform
-          `}
+      className={`absolute top-1/2 h-1/5 w-1/2 origin-right -translate-y-1/2 rounded-full ${rotation} transition-transform`}
       style={{
         transitionDuration: `${transitionTimeMs}ms`,
         transitionTimingFunction: animationType ?? "linear",

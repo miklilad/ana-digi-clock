@@ -1,92 +1,7 @@
-import {
-  ColorPicker,
-  ColorPickerFormat,
-  ColorPickerHue,
-  ColorPickerOutput,
-  ColorPickerSelection,
-} from "@/components/ui/shadcn-io/color-picker";
-import type Color from "color";
-import { useState, useCallback, useMemo } from "react";
-import { SettingsContext, useSettings } from "./useSettings";
-
-interface BurgerButtonProps {
-  handleClick: () => void;
-}
-
-export const BurgerButton = ({ handleClick }: BurgerButtonProps) => {
-  return (
-    <button
-      className="border-y-[2px] border-l-[2px] border-gray-500 rounded-l-full p-1 absolute top-10 right-1/1 hover:cursor-pointer"
-      onClick={handleClick}
-    >
-      <div className="flex flex-col gap-2 py-2 pl-3 pr-1">
-        <div className="w-6 h-1 bg-gray-500 rounded-full"></div>
-        <div className="w-6 h-1 bg-gray-500 rounded-full"></div>
-        <div className="w-6 h-1 bg-gray-500 rounded-full"></div>
-      </div>
-    </button>
-  );
-};
-
-export const SettingsMenu = () => {
-  const { setBackgroundColor, setHandColor } = useSettings();
-
-  const handleBackgroundColorChange = useCallback(
-    (color: Parameters<typeof Color.rgb>[0]) => {
-      setBackgroundColor(color as number[]);
-    },
-    [setBackgroundColor]
-  );
-
-  const handleHandColorChange = useCallback(
-    (color: Parameters<typeof Color.rgb>[0]) => {
-      setHandColor(color as number[]);
-    },
-    [setHandColor]
-  );
-  return (
-    <div
-      className={`h-screen border-l-[2px] border-gray-500 p-10 bg-gray-900 overflow-hidden`}
-    >
-      <ColorPicker
-        defaultValue="#020b29"
-        onChange={handleBackgroundColorChange}
-        className="max-w-sm rounded-md border bg-gray-900 p-4 shadow-sm h-1/2"
-      >
-        <ColorPickerSelection />
-        <div className="flex items-center gap-4">
-          {/* <ColorPickerEyeDropper /> */}
-          <div className="grid w-full gap-1">
-            <ColorPickerHue />
-            {/* <ColorPickerAlpha /> */}
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <ColorPickerOutput />
-          <ColorPickerFormat />
-        </div>
-      </ColorPicker>
-      <ColorPicker
-        defaultValue="#efb100"
-        onChange={handleHandColorChange}
-        className="max-w-sm rounded-md border bg-gray-900 p-4 shadow-sm h-1/2"
-      >
-        <ColorPickerSelection />
-        <div className="flex items-center gap-4">
-          {/* <ColorPickerEyeDropper /> */}
-          <div className="grid w-full gap-1">
-            <ColorPickerHue />
-            {/* <ColorPickerAlpha /> */}
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <ColorPickerOutput />
-          <ColorPickerFormat />
-        </div>
-      </ColorPicker>
-    </div>
-  );
-};
+import { useState, useMemo } from "react";
+import { SettingsContext } from "./useSettings";
+import { BurgerButton } from "./BurgerButton";
+import { SettingsMenu } from "./SettingsMenu";
 
 export const Settings = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -115,9 +30,51 @@ export const SettingsProvider = ({
 
   const [handColor, setHandColor] = useState<number[]>([0, 0, 0, 255]);
 
+  // Show Day, Hour, Minute, Second
+  const [showYear, setShowYear] = useState(false);
+  const [showMonth, setShowMonth] = useState(false);
+  const [showDay, setShowDay] = useState(false);
+  const [showHour, setShowHour] = useState(true);
+  const [showMinute, setShowMinute] = useState(true);
+  const [showSecond, setShowSecond] = useState(true);
+
   const contextValue = useMemo(
-    () => ({ backgroundColor, setBackgroundColor, handColor, setHandColor }),
-    [backgroundColor, setBackgroundColor, handColor, setHandColor]
+    () => ({
+      backgroundColor,
+      setBackgroundColor,
+      handColor,
+      setHandColor,
+      showYear,
+      setShowYear,
+      showMonth,
+      setShowMonth,
+      showDay,
+      setShowDay,
+      showHour,
+      setShowHour,
+      showMinute,
+      setShowMinute,
+      showSecond,
+      setShowSecond,
+    }),
+    [
+      backgroundColor,
+      setBackgroundColor,
+      handColor,
+      setHandColor,
+      showYear,
+      setShowYear,
+      showMonth,
+      setShowMonth,
+      showDay,
+      setShowDay,
+      showHour,
+      setShowHour,
+      showMinute,
+      setShowMinute,
+      showSecond,
+      setShowSecond,
+    ]
   );
 
   return (
