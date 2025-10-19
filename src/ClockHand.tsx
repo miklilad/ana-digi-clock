@@ -33,8 +33,7 @@ export const ClockHand = ({
     <div
       className={`h-1/5 w-1/2
          origin-right absolute top-1/2
-          -translate-y-1/2 rounded-full ${rotation}
-          transition-transform}
+         -translate-y-1/2 rounded-full ${rotation} transition-transform
           `}
       style={{
         transitionDuration: `${transitionTimeMs}ms`,
