@@ -1,13 +1,10 @@
-import type Color from "color";
 import { createContext, useContext } from "react";
 
 interface SettingsContextType {
-  backgroundColor: Parameters<typeof Color.rgb>[0];
-  setBackgroundColor: (
-    backgroundColor: Parameters<typeof Color.rgb>[0]
-  ) => void;
-  handColor: Parameters<typeof Color.rgb>[0];
-  setHandColor: (handColor: Parameters<typeof Color.rgb>[0]) => void;
+  backgroundColor: number[];
+  setBackgroundColor: (backgroundColor: number[]) => void;
+  handColor: number[];
+  setHandColor: (handColor: number[]) => void;
 }
 export const SettingsContext = createContext<SettingsContextType | undefined>(
   undefined

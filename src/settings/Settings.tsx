@@ -33,14 +33,14 @@ export const SettingsMenu = () => {
 
   const handleBackgroundColorChange = useCallback(
     (color: Parameters<typeof Color.rgb>[0]) => {
-      setBackgroundColor(color);
+      setBackgroundColor(color as number[]);
     },
     [setBackgroundColor]
   );
 
   const handleHandColorChange = useCallback(
     (color: Parameters<typeof Color.rgb>[0]) => {
-      setHandColor(color);
+      setHandColor(color as number[]);
     },
     [setHandColor]
   );
@@ -109,13 +109,11 @@ export const SettingsProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [backgroundColor, setBackgroundColor] = useState<
-    Parameters<typeof Color.rgb>[0]
-  >([0, 0, 0, 255]);
-
-  const [handColor, setHandColor] = useState<Parameters<typeof Color.rgb>[0]>([
+  const [backgroundColor, setBackgroundColor] = useState<number[]>([
     0, 0, 0, 255,
   ]);
+
+  const [handColor, setHandColor] = useState<number[]>([0, 0, 0, 255]);
 
   const contextValue = useMemo(
     () => ({ backgroundColor, setBackgroundColor, handColor, setHandColor }),
